@@ -28,6 +28,8 @@ GND ........... GND (optional via breadboard negative rail)<br>
 
 
 ### Software
+Prerequisite: MicroPython for Raspberry Pi Pico must be installed on the device. Our version (rp2-pico-20230426-v1.20.0.uf2) is available in the repository.
+
 Our program uses a modified version of Noyel Seth's (@noyelseth) <a href="https://github.com/Circuit-Digest/rpi-pico-micropython-esp8266-lib">rpi-pico-micropython-esp8266-lib</a>. Many thanks to @MladenSU for their crucial <a href="https://github.com/Circuit-Digest/rpi-pico-micropython-esp8266-lib/pull/1">pull request</a> that fixes fatal errors.<br>
 
 The `esp8266time.py` file contains three main sections
@@ -37,5 +39,16 @@ The `esp8266time.py` file contains three main sections
 
 The main program first sets up the ESP8266-01 module as an instantiated Python object, then connects to the local Wifi network given the username and password, and finally gets and returns the local time.<br>
 
-<b>Special Consideration: WiFi Captive Portal</b>
-Our primary workspace was located on-campus at Seattle Pacific University. Accordingly, we relied largely on campus WiFi which does not use traditional WPA-2 encryption as is found on many home and business networks. Instead, SPU relies on a captive portal which allows any user to join the network with a simple username and password but does not provide Internet connection until the user is authenticated via a login to an SPU webpage. Obviously the Pico is not a browser device so to account for this we followed <a href="https://wiki.spu.edu/display/HKB/Registering+Non-Browser+Devices+for+Network+Access">the instructions</a> of the CIS Helpdesk at SPU, which require opening a port for the device based on its MAC address.
+<b>Special Consideration: WiFi Captive Portal: </b>
+Our primary workspace was located on-campus at Seattle Pacific University. Accordingly, we relied largely on campus WiFi which does not use traditional WPA-2 encryption as is found on many home and business networks. Instead, SPU relies on a captive portal which allows any user to join the network with a simple username and password but does not provide Internet connection until the user is authenticated via a login to an SPU webpage. Obviously the Pico is not a browser device so to account for this we followed <a href="https://wiki.spu.edu/display/HKB/Registering+Non-Browser+Devices+for+Network+Access">the instructions</a> of the CIS Helpdesk at SPU, which require opening a port for the device based on its MAC address. To do this, we connected the ESP8266-01 to CoolTerm and performed the following process:
+
+1. Configure settings<br>
+a. Ensure correct port is selected<br>
+b. Set Baudrate: 115200<br>
+c. Enable line mode via Settings > Terminal Options > Line Mode
+2. Ensure the ESP8266-01 is properly connected by sending `AT` via the terminal<br>
+a. A response of "OK" means it is working<br>
+b. Anything else means the module is not properly connected<br>
+3. Set station mode with `AT+CWMODE=1`
+4. Get MAC address with `AT+CIPSTAMAC?`
+5. <i>Optional: The WiFi can be connected directly via terminal using `AT+CWJAP=“SSID”,”Password”` (include quotes)</i>
