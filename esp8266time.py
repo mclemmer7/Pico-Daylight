@@ -673,10 +673,10 @@ print("WiFi Current Mode:",esp01.setCurrentWiFiMode())
 print("\r\n\r\n")
 
 #Connect with the WiFi
-print("Try to connect with the WiFi..")
+print("Trying to connect to WiFi..")
 while (1):
     if "WIFI CONNECTED" in esp01.connectWiFi(WIFI_NAME, WIFI_PASSWORD): ###CHANGE WIFI SETTINGS
-        print("ESP8266 connect with the WiFi..")
+        print("ESP8266 connected to the WiFi!")
         break;
     else:
         print(".")
