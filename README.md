@@ -1,13 +1,15 @@
 # Pico-Daylight
-Authors:<br>
+
+## Description
+This repository hosts the files for our Raspberry Pi Pico project for a Daylight Alarm. The system is designed to help one's circadian rhythm more in sync with the natural daylight cycle by mimicking natural light throughout the day. The brightness of the light can be controlled at any time by the user using a dial, which is a potentiometer that scales the user's input to adjust the brightness of the lights on a 0 - 100 scale. The project also has a built in alarm that can wake the user up using soft simulated sunlight that gradually gets brighter. At the end of the wake-up sequence a buzzer is programmed to sound so that the user is sure to be woken. The alarm can be configured to go off at any time, and is able to be turned off for days that you just want to use the clock features. The system has an OLED that displays the currentlocal time, which it fetches using an Internet connection, provided by an ESP8266-01 Wifi Module. <br><br>
+<b>Features: </b> LED Simulated Daylight, LED Alarm, Buzzer Alarm, OLED, WiFi Connection, Adjustable Brightness
+<br><br><img src="https://user-images.githubusercontent.com/29272159/134868586-bd05f5e9-eaf2-4ac2-9688-7aca16165bf8.png" width="250">
+
+## Authors
 Andrew Macpherson (@admacpherson)<br>
 Mark Clemmer (@mclemmer7)<br>
 Ebby Buchta (@ebbyy)<br>
 Handrae Henthorn<br><br>
-<img src="https://user-images.githubusercontent.com/29272159/134868586-bd05f5e9-eaf2-4ac2-9688-7aca16165bf8.png" width="250">
-
-## Description
-This repository hosts the files for our Raspberry Pi Pico project for a Daylight Alarm<br>
 
 ## ESP 8266-01 Documentation
 To get the current time for the alarm clock, our project uses an ESP8266-01 Wifi module to connect to the Internet and the MicroPython `utime` library to fetch the present time. 
