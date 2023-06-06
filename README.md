@@ -39,6 +39,12 @@ The `esp8266time.py` file contains three main sections
 
 The main program first sets up the ESP8266-01 module as an instantiated Python object, then connects to the local Wifi network given the username and password, and finally gets and returns the local time.<br>
 
+<b>Instantiating the ESP8266 object: </b> The `esp8266.py` class contains a default class constructor:
+`def __init__(self, uartPort=0, baudRate=115200, txPin=(0), rxPin=(1)):`. Before changing the TX and RX pins, consult the <a href="https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html">Raspberry Pi Pico documentation</a> to ensure that the UART port does not also need to be changed.
+
+<img width="600" alt="Screenshot 2023-06-06 at 11 02 01 AM" src="https://github.com/admacpherson/Pico-Daylight/assets/102562791/642abab4-ed45-4748-88b2-8626c3658a33">
+
+
 <b>Special Consideration: WiFi Captive Portal: </b>
 Our primary workspace was located on-campus at Seattle Pacific University. Accordingly, we relied largely on campus WiFi which does not use traditional WPA-2 encryption as is found on many home and business networks. Instead, SPU relies on a captive portal which allows any user to join the network with a simple username and password but does not provide Internet connection until the user is authenticated via a login to an SPU webpage. Obviously the Pico is not a browser device so to account for this we followed <a href="https://wiki.spu.edu/display/HKB/Registering+Non-Browser+Devices+for+Network+Access">the instructions</a> of the CIS Helpdesk at SPU, which require opening a port for the device based on its MAC address. To do this, we connected the ESP8266-01 to CoolTerm and performed the following process:
 
