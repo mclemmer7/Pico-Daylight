@@ -125,7 +125,7 @@ class ESP8266:
     __txData=None
     __httpResponse=None
     
-    def __init__(self, uartPort=0, baudRate=115200, txPin=(0), rxPin=(1)):
+    def __init__(self, uartPort=0, baudRate=115200, txPin=(16), rxPin=(17)):
         """
         The constaructor for ESP8266 class
         
@@ -640,62 +640,64 @@ def httpTestSequence():
 #from machine import Pin
 #from esp8266 import ESP8266
 #import time, sys
-import sys
-import utime
+# import sys
+# import utime
+# 
+# #-----STARTUP SEQUENCE-----#
+# 
+# WIFI_NAME = "SPU-Wireless"
+# WIFI_PASSWORD = "SPU-Wireless"
+# 
+# print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+# print("RPi-Pico MicroPython Ver:", sys.version)
+# print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+# 
+# ## Create an ESP8266 Object
+# #Default args: uartPort=0, baudRate=115200, txPin=(0), rxPin=(1)
+# esp01 = ESP8266()
+# esp8266_at_ver = None
+# 
+# print("StartUP",esp01.startUP())
+# print("Echo-Off",esp01.echoING())
+# print("\r\n")
+# 
+# #Print ESP8266 AT comand version and SDK details
+# esp8266_at_ver = esp01.getVersion()
+# if(esp8266_at_ver != None):
+#     print(esp8266_at_ver)
+#     
+# #-----WIFI CONFIGURATION-----#
+# 
+# #Set the current WiFi in SoftAP+STA
+# print("WiFi Current Mode:",esp01.setCurrentWiFiMode())
+# print("\r\n\r\n")
+# 
+# #Connect with the WiFi
+# print("Try to connect with the WiFi..")
+# while (1):
+#     if "WIFI CONNECTED" in esp01.connectWiFi(WIFI_NAME, WIFI_PASSWORD): ###CHANGE WIFI SETTINGS
+#         print("ESP8266 connect with the WiFi..")
+#         break;
+#     else:
+#         print(".")
+#         time.sleep(2)
+# 
+# #-----FUNCTIONALITY-----#
+#         
+# #Sample HTTP Sequence
+# #httpTestSequence()
+# 
+# # Get the current timestamp in seconds since epoch
+# timestamp = utime.time()
+# 
+# # Convert the timestamp to a tuple representing local time
+# local_time = utime.localtime(timestamp)
+# 
+# # Extract individual components from the local time tuple
+# year, month, day, hour, minute, second, _, _ = local_time
+# 
+# # Print the current date and time
+# print("Date: {:04d}-{:02d}-{:02d}".format(year, month, day))
+# print("Time: {:02d}:{:02d}:{:02d}".format(hour, minute, second))
 
-#-----STARTUP SEQUENCE-----#
 
-WIFI_NAME = "SPU-Wireless"
-WIFI_PASSWORD = "SPU-Wireless"
-
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print("RPi-Pico MicroPython Ver:", sys.version)
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
-## Create an ESP8266 Object
-#Default args: uartPort=0, baudRate=115200, txPin=(0), rxPin=(1)
-esp01 = ESP8266()
-esp8266_at_ver = None
-
-print("StartUP",esp01.startUP())
-print("Echo-Off",esp01.echoING())
-print("\r\n")
-
-#Print ESP8266 AT comand version and SDK details
-esp8266_at_ver = esp01.getVersion()
-if(esp8266_at_ver != None):
-    print(esp8266_at_ver)
-    
-#-----WIFI CONFIGURATION-----#
-
-#Set the current WiFi in SoftAP+STA
-print("WiFi Current Mode:",esp01.setCurrentWiFiMode())
-print("\r\n\r\n")
-
-#Connect with the WiFi
-print("Trying to connect to WiFi..")
-while (1):
-    if "WIFI CONNECTED" in esp01.connectWiFi(WIFI_NAME, WIFI_PASSWORD): ###CHANGE WIFI SETTINGS
-        print("ESP8266 connected to the WiFi!")
-        break;
-    else:
-        print(".")
-        time.sleep(2)
-
-#-----FUNCTIONALITY-----#
-        
-#Sample HTTP Sequence
-#httpTestSequence()
-
-# Get the current timestamp in seconds since epoch
-timestamp = utime.time()
-
-# Convert the timestamp to a tuple representing local time
-local_time = utime.localtime(timestamp)
-
-# Extract individual components from the local time tuple
-year, month, day, hour, minute, second, _, _ = local_time
-
-# Print the current date and time
-print("Date: {:04d}-{:02d}-{:02d}".format(year, month, day))
-print("Time: {:02d}:{:02d}:{:02d}".format(hour, minute, second))
